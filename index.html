@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lineeswaran S — DevOps Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A2A43;
+    --bg-panel:#0F3655;
+    --line:rgba(232,238,243,0.14);
+    --line-soft:rgba(232,238,243,0.07);
+    --text:#E8EEF3;
+    --text-dim:#9FB8CC;
+    --amber:#E8A33D;
+    --green:#6FCF97;
+    --display:'Space Grotesk',sans-serif;
+    --body:'Inter',sans-serif;
+    --mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.6;
+    background-image:
+      linear-gradient(var(--line-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+    background-size:40px 40px;
+  }
+  a{color:var(--amber);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  ::selection{background:var(--amber);color:var(--bg);}
+
+  .wrap{max-width:920px;margin:0 auto;padding:0 28px;}
+
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(10,42,67,0.85);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 28px;max-width:920px;margin:0 auto;}
+  .nav-mark{font-family:var(--mono);font-size:13px;letter-spacing:0.08em;color:var(--amber);}
+  .nav-links{display:flex;gap:22px;font-family:var(--mono);font-size:12px;letter-spacing:0.05em;}
+  .nav-links a{color:var(--text-dim);}
+  .nav-links a:hover{color:var(--amber);text-decoration:none;}
+  .nav-btn{
+    background:none;border:none;cursor:pointer;
+    color:var(--text-dim);font-family:var(--mono);font-size:12px;letter-spacing:0.05em;
+    padding:0;
+  }
+  .nav-btn:hover{color:var(--amber);}
+
+  .hero{padding:72px 0 40px;}
+  .eyebrow{
+    font-family:var(--mono);font-size:12px;color:var(--amber);
+    letter-spacing:0.12em;text-transform:uppercase;margin-bottom:18px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:'';width:22px;height:1px;background:var(--amber);display:inline-block;}
+  h1{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(38px,6vw,64px);
+    line-height:1.04;letter-spacing:-0.01em;
+    color:var(--text);
+  }
+  .role-line{
+    font-family:var(--mono);font-size:15px;color:var(--text-dim);
+    margin-top:14px;letter-spacing:0.02em;
+  }
+  .role-line span{color:var(--green);}
+  .contact-line{
+    font-family:var(--mono);font-size:13px;color:var(--text-dim);
+    margin-top:22px;display:flex;flex-wrap:wrap;gap:6px 14px;
+  }
+  .contact-line a{color:var(--text-dim);border-bottom:1px dotted var(--text-dim);}
+  .contact-line a:hover{color:var(--amber);border-color:var(--amber);}
+
+  .pipeline{margin:56px 0 8px;}
+  .pipeline-label{font-family:var(--mono);font-size:11px;color:var(--text-dim);letter-spacing:0.1em;margin-bottom:16px;text-transform:uppercase;}
+  .pipeline-track{
+    position:relative;display:flex;align-items:flex-start;
+    justify-content:space-between;overflow-x:auto;padding-bottom:10px;
+  }
+  .pipeline-track::before{
+    content:'';position:absolute;top:19px;left:0;right:0;height:1px;
+    background:repeating-linear-gradient(90deg, var(--line) 0 8px, transparent 8px 14px);
+    z-index:0;
+  }
+  .stage{
+    position:relative;z-index:1;flex:1;min-width:118px;
+    display:flex;flex-direction:column;align-items:center;text-align:center;
+    opacity:0;transform:translateY(8px);
+    animation:stageIn 0.5s ease forwards;
+  }
+  .stage:nth-child(1){animation-delay:.15s;}
+  .stage:nth-child(2){animation-delay:.45s;}
+  .stage:nth-child(3){animation-delay:.75s;}
+  .stage:nth-child(4){animation-delay:1.05s;}
+  .stage:nth-child(5){animation-delay:1.35s;}
+  @keyframes stageIn{to{opacity:1;transform:translateY(0);}}
+  .node{
+    width:38px;height:38px;border-radius:50%;
+    background:var(--bg-panel);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--mono);font-size:11px;color:var(--amber);
+    margin-bottom:10px;transition:box-shadow .3s, border-color .3s;
+  }
+  .stage:hover .node{border-color:var(--amber);box-shadow:0 0 0 4px rgba(232,163,61,0.12);}
+  .stage-name{font-family:var(--display);font-weight:600;font-size:14px;color:var(--text);}
+  .stage-tools{font-family:var(--mono);font-size:10.5px;color:var(--text-dim);margin-top:4px;line-height:1.5;}
+
+  section{padding:56px 0;border-top:1px solid var(--line);}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:28px;}
+  .sec-num{font-family:var(--mono);font-size:12px;color:var(--amber);}
+  h2{font-family:var(--display);font-weight:700;font-size:26px;letter-spacing:-0.01em;}
+
+  .summary-text{color:var(--text-dim);font-size:15.5px;max-width:660px;}
+  .summary-text strong{color:var(--text);font-weight:600;}
+
+  .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 32px;}
+  .skill-row{border-bottom:1px solid var(--line-soft);padding-bottom:10px;}
+  .skill-cat{font-family:var(--mono);font-size:11px;color:var(--amber);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;}
+  .skill-val{font-size:14.5px;color:var(--text);}
+  @media(max-width:640px){.skills-grid{grid-template-columns:1fr;}}
+
+  .job{margin-bottom:44px;}
+  .job:last-child{margin-bottom:0;}
+  .job-top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 16px;margin-bottom:2px;}
+  .job-title{font-family:var(--display);font-weight:600;font-size:18px;color:var(--text);}
+  .job-date{font-family:var(--mono);font-size:12.5px;color:var(--amber);white-space:nowrap;}
+  .job-org{font-size:14px;color:var(--text-dim);margin-bottom:16px;}
+  .job-org b{color:var(--text-dim);font-weight:600;}
+  ul.bullets{list-style:none;}
+  ul.bullets li{
+    position:relative;padding-left:20px;margin-bottom:10px;
+    font-size:14.5px;color:var(--text-dim);
+  }
+  ul.bullets li::before{
+    content:'▸';position:absolute;left:0;top:0;color:var(--amber);font-size:13px;
+  }
+  ul.bullets li strong{color:var(--text);font-weight:600;}
+
+  .card-row{display:flex;flex-direction:column;gap:18px;}
+  .card{
+    background:var(--bg-panel);border:1px solid var(--line);
+    border-radius:6px;padding:18px 20px;
+  }
+  .card-title{font-family:var(--display);font-weight:600;font-size:15.5px;color:var(--text);}
+  .card-sub{font-family:var(--mono);font-size:12.5px;color:var(--text-dim);margin-top:4px;}
+
+  footer{padding:64px 0 48px;text-align:center;}
+  footer .eyebrow{justify-content:center;}
+  footer .eyebrow::before{display:none;}
+  footer h2{font-size:28px;}
+  .footer-contacts{
+    margin-top:22px;display:flex;justify-content:center;gap:22px;flex-wrap:wrap;
+    font-family:var(--mono);font-size:13px;
+  }
+  .footer-note{margin-top:40px;font-family:var(--mono);font-size:11px;color:var(--text-dim);opacity:0.6;}
+
+  @media (prefers-reduced-motion: reduce){
+    .stage{animation:none;opacity:1;transform:none;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="nav-mark">LS // DEVOPS</div>
+    <div class="nav-links">
+      <button class="nav-btn" data-target="experience">Experience</button>
+      <button class="nav-btn" data-target="skills">Skills</button>
+      <button class="nav-btn" data-target="certs">Certs</button>
+      <button class="nav-btn" data-target="contact">Contact</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero" style="border-top:none;padding-bottom:0;">
+    <div class="eyebrow">Bangalore, India</div>
+    <h1>Lineeswaran&nbsp;S</h1>
+    <div class="role-line">DevOps Engineer — <span>AWS / Terraform / Docker / Kubernetes</span></div>
+    <div class="contact-line">
+      <span>9385308365</span>
+      <span>·</span>
+      <a href="mailto:lineeswaran.s@gmail.com">lineeswaran.s@gmail.com</a>
+      <span>·</span>
+      <a href="#" target="_blank">LinkedIn</a>
+      <span>·</span>
+      <a href="#" target="_blank">GitHub</a>
+    </div>
+
+    <div class="pipeline">
+      <div class="pipeline-label">// deployment pipeline</div>
+      <div class="pipeline-track">
+        <div class="stage">
+          <div class="node">01</div>
+          <div class="stage-name">Code</div>
+          <div class="stage-tools">Git · GitHub</div>
+        </div>
+        <div class="stage">
+          <div class="node">02</div>
+          <div class="stage-name">Build</div>
+          <div class="stage-tools">Jenkins<br>GitHub Actions</div>
+        </div>
+        <div class="stage">
+          <div class="node">03</div>
+          <div class="stage-name">Package</div>
+          <div class="stage-tools">Docker · ECR</div>
+        </div>
+        <div class="stage">
+          <div class="node">04</div>
+          <div class="stage-name">Deploy</div>
+          <div class="stage-tools">Terraform · EKS<br>ArgoCD</div>
+        </div>
+        <div class="stage">
+          <div class="node">05</div>
+          <div class="stage-name">Observe</div>
+          <div class="stage-tools">Prometheus<br>Grafana</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="summary">
+    <div class="sec-head"><span class="sec-num">§01</span><h2>Summary</h2></div>
+    <p class="summary-text">
+      DevOps Engineer with hands-on experience provisioning <strong>AWS infrastructure</strong> using Terraform, building
+      <strong>CI/CD pipelines</strong> with Jenkins and GitHub Actions, and deploying containerized applications on
+      <strong>AWS EKS</strong> using Docker and ArgoCD GitOps workflows. Skilled in monitoring with Prometheus and Grafana,
+      and resolving production incidents via ServiceNow, Splunk, and CloudWatch. AWS Certified Cloud Practitioner with a
+      background in application support, scripting (Bash, Python), and Linux administration.
+    </p>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head"><span class="sec-num">§02</span><h2>Technical Skills</h2></div>
+    <div class="skills-grid">
+      <div class="skill-row"><div class="skill-cat">Cloud</div><div class="skill-val">AWS — EC2, IAM, S3, VPC, ECS, EKS, RDS</div></div>
+      <div class="skill-row"><div class="skill-cat">Containers</div><div class="skill-val">Docker</div></div>
+      <div class="skill-row"><div class="skill-cat">Orchestration</div><div class="skill-val">Kubernetes</div></div>
+      <div class="skill-row"><div class="skill-cat">Infrastructure as Code</div><div class="skill-val">Terraform</div></div>
+      <div class="skill-row"><div class="skill-cat">Config Management</div><div class="skill-val">Ansible</div></div>
+      <div class="skill-row"><div class="skill-cat">CI/CD</div><div class="skill-val">Jenkins, GitHub Actions</div></div>
+      <div class="skill-row"><div class="skill-cat">GitOps</div><div class="skill-val">ArgoCD</div></div>
+      <div class="skill-row"><div class="skill-cat">Version Control</div><div class="skill-val">Git, GitHub</div></div>
+      <div class="skill-row"><div class="skill-cat">Operating System</div><div class="skill-val">Linux</div></div>
+      <div class="skill-row"><div class="skill-cat">Monitoring</div><div class="skill-val">Prometheus, Grafana</div></div>
+      <div class="skill-row"><div class="skill-cat">Scripting</div><div class="skill-val">Bash</div></div>
+      <div class="skill-row"><div class="skill-cat">Languages</div><div class="skill-val">Python, Java</div></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head"><span class="sec-num">§03</span><h2>Professional Experience</h2></div>
+
+    <div class="job">
+      <div class="job-top">
+        <div class="job-title">System Engineer — DevOps</div>
+        <div class="job-date">AUG 2025 — PRESENT</div>
+      </div>
+      <div class="job-org"><b>Tata Consultancy Services (TCS)</b>, Bangalore, India · Client: Standard Life / Phoenix (UK insurance enterprise)</div>
+      <ul class="bullets">
+        <li>Provisioned and managed cloud infrastructure across <strong>three AWS environments</strong> (Dev, Staging, Prod) using modular Terraform code, reducing manual environment setup time by <strong>40%</strong></li>
+        <li>Built and maintained <strong>10+ CI/CD workflows</strong> using Jenkins and GitHub Actions, automating unit testing, security vulnerability scans, and Docker image generation</li>
+        <li>Containerized core application microservices using Docker, pushed artifacts to AWS ECR, and maintained deployments across <strong>EKS Kubernetes</strong> clusters</li>
+        <li>Configured automated GitOps continuous delivery workflows in <strong>ArgoCD</strong>, reducing manual deployment errors</li>
+        <li>Built custom <strong>Grafana dashboards</strong> integrated with Prometheus metrics for real-time visibility into CPU, memory, and pod latency across 20+ microservices</li>
+        <li>Resolved <strong>90+ production incidents</strong> logged via ServiceNow by analyzing logs in Splunk and AWS CloudWatch, maintaining 95% SLA compliance</li>
+        <li>Wrote operational Bash and Python scripts to automate routine maintenance tasks</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-top">
+        <div class="job-title">Application Support Engineer</div>
+        <div class="job-date">AUG 2024 — JUL 2025</div>
+      </div>
+      <div class="job-org"><b>Tata Consultancy Services (TCS)</b>, Bangalore, India · Client: Standard Life / Phoenix (UK insurance enterprise)</div>
+      <ul class="bullets">
+        <li>Resolved user-raised incidents via <strong>ServiceNow</strong>, including application errors, page load failures, access issues, and PDF generation/download defects</li>
+        <li>Monitored application performance and proactively identified incidents using <strong>Dynatrace</strong></li>
+        <li>Performed root cause analysis on recurring production issues, including incorrect data rendering in generated PDF documents</li>
+        <li>Coordinated with technical teams to escalate and resolve complex incidents within SLA timelines</li>
+        <li>Documented recurring issues and resolutions to support faster future troubleshooting</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="certs">
+    <div class="sec-head"><span class="sec-num">§04</span><h2>Certifications</h2></div>
+    <div class="card-row">
+      <div class="card">
+        <div class="card-title">AWS Cloud Quest — Cloud Practitioner, Gen AI Practitioner</div>
+        <div class="card-sub">January 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="sec-head"><span class="sec-num">§05</span><h2>Education</h2></div>
+    <div class="card-row">
+      <div class="card">
+        <div class="card-title">Bachelor of Engineering (B.E.), Mechanical Engineering</div>
+        <div class="card-sub">Kalaignar Karunanidhi Institute of Technology (KIT), Coimbatore · 2019 – 2023</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="eyebrow">// let's connect</div>
+    <h2>Open to DevOps & AWS Cloud Engineer roles</h2>
+    <div class="footer-contacts">
+      <a href="mailto:lineeswaran.s@gmail.com">lineeswaran.s@gmail.com</a>
+      <span style="color:var(--text-dim)">9385308365</span>
+      <a href="#" target="_blank">LinkedIn</a>
+      <a href="#" target="_blank">GitHub</a>
+    </div>
+    <div class="footer-note">BUILT — AWS · TERRAFORM · DOCKER · KUBERNETES</div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.nav-btn').forEach(function(link){
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      var target = document.getElementById(link.getAttribute('data-target'));
+      if(target){
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    });
+  });
+</script>
+</body>
+</html>
